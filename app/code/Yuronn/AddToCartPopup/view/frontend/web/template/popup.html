@@ -1,0 +1,23 @@
+
+<div class="cart-popup" data-bind='afterRender: setModalElement'>
+    <div class="modal-popup-header">
+        <p class="title"><!-- ko i18n: 'Product(s) was added to your bag!' --><!-- /ko --></p>
+        <div class="modal-popup-product">
+            <div class="product-data">
+                <p class="product-name" data-bind="html: productData.productName"></p>
+                <p class="product-sku" data-bind="html: productData.productSku"></p>
+                <div class="price-box">
+                    <p class="product-qty" data-bind="html: productData.productQty"></p>
+                    <p class="product-qty1" data-bind="html: checkQty()"></p>
+                    <p class="product-price" data-bind="html: productData.productPrice"></p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal-popup-body">
+        <p class="title"><!-- ko i18n: 'You may also like' --><!-- /ko --></p>
+
+        <!-- related products list-->
+
+    </div>
+</div>
