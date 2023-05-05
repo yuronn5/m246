@@ -1,9 +1,9 @@
 <page layout="1column" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
     <body>
         <referenceContainer name="content">
-            <container name="add.to.cart.popup" htmlTag="div" htmlClass="add-to-cart-popup" after="-">
-                <block name="mgk.cartpopup"
-                       template="Yuronn_AddToCartPopup::test.phtml">
+            <container name="add.to.cart.popup.test" htmlTag="div" htmlClass="add-to-cart-popup" after="-">
+                <block name="mgk.cartpopup.test"
+                       template="Elogic_AddToCartPopup::test.phtml">
                 </block>
             </container>
         </referenceContainer>

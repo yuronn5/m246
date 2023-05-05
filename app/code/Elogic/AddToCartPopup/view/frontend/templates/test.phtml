@@ -1,6 +1,6 @@
 
-<div data-placeholder="cart-popup" style="display: none;" class="cart-popup-class">
-    <div data-bind="scope: 'cartPopup'">
+<div data-placeholder="cart-popup" style="display: none;" class="cart-popup">
+    <div data-bind="scope: 'cartPopupT'">
         <!-- ko template: getTemplate() --><!-- /ko -->
     </div>
 </div>
@@ -10,9 +10,9 @@
    "*": {
        "Magento_Ui/js/core/app": {
           "components": {
-               "cartPopup": {
-                   "component": "Yuronn_AddToCartPopup/js/view",
-                   "template": "Yuronn_AddToCartPopup/popup",
+               "cartPopupT": {
+                   "component": "Elogic_AddToCartPopup/js/view",
+                   "template": "Elogic_AddToCartPopup/popup",
 		           "productData": {
 		                "productName" : "testName",
 		                "productQty" : "10",

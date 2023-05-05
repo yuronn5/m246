@@ -2,7 +2,7 @@ define([
     'jquery',
     'uiComponent',
     'ko',
-    'Yuronn_AddToCartPopup/js/model/popup',
+    'Elogic_AddToCartPopup/js/model/popup',
     'Magento_Ui/js/modal/modal'
 ], function ($, Component, ko, cartModel, modal) {
     'use strict';
@@ -32,11 +32,9 @@ define([
         _subscribeEvents: function () {
             var self = this;
 
-
             $(document).on('ajax:addToCart', function () {
                 // console.log("added by ajax");
                 this.isAdded = true;
-
 
                 if (this.isAdded) {
                     cartModel.showModal();
@@ -51,6 +49,10 @@ define([
             this.qty = 'updated qty';
 
             return this.qty;
+        },
+
+        slider: function () {
+            console.log(1);
         }
     })
 });
