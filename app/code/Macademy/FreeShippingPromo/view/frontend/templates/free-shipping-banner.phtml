@@ -1,0 +1,21 @@
+<?php
+/**
+ * Copyright © Elogic, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+/**
+* @var $block \Magento\Framework\View\Element\Template
+*/
+?>
+
+<div id="free-shipping-banner" data-bind="scope: 'free-shipping-banner'">
+    <!-- ko template: getTemplate() --><!-- /ko -->
+</div>
+
+<script type="text/x-magento-init">
+    {
+        "#free-shipping-banner": {
+            "Magento_Ui/js/core/app": <?= $block->getJsLayout() ?>
+        }
+    }
+</script>

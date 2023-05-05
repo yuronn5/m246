@@ -1,0 +1,43 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceBlock name="checkout.root">
+            <arguments>
+                <argument name="jsLayout" xsi:type="array">
+                    <item name="components" xsi:type="array">
+                        <item name="checkout" xsi:type="array">
+                            <item name="children" xsi:type="array">
+                                <item name="steps" xsi:type="array">
+                                    <item name="children" xsi:type="array">
+                                        <item name="shipping-step" xsi:type="array">
+                                            <item name="children" xsi:type="array">
+                                                <item name="shippingAddress" xsi:type="array">
+                                                    <item name="children" xsi:type="array">
+                                                        <item name="before-form" xsi:type="array">
+                                                            <item name="children" xsi:type="array">
+                                                                <!-- Our component here -->
+                                                                <item name="ourCustomMessage" xsi:type="array">
+                                                                    <item name="component" xsi:type="string">Elogic_CheckoutTraining/js/message</item>
+                                                                    <item name="config" xsi:type="array">
+                                                                        <item name="superMessage" xsi:type="string" translate="true">
+                                                                            Hello it's custom message from checkout layout
+                                                                        </item>
+                                                                    </item>
+                                                                </item>
+                                                            </item>
+                                                        </item>
+                                                    </item>
+                                                </item>
+                                            </item>
+                                        </item>
+                                    </item>
+                                </item>
+                            </item>
+                        </item>
+                    </item>
+                </argument>
+            </arguments>
+
+        </referenceBlock>
+    </body>
+</page>

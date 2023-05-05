@@ -1,0 +1,29 @@
+<?php
+/** @var \Elogic\LayeredNav\Block\Template $block */
+$categoryId = (int) $this->getRequest()->getParam('id', false);
+$categories = $block->getChildCategories($categoryId);
+
+?>
+<?php if(count($categories) > 0):?>
+
+    <div data-role="collapsible" class="filter-options-item" role="presentation" data-collapsible="true">
+        <div data-role="title" class="filter-options-title" role="tab" aria-selected="false" aria-expanded="false" tabindex="0"><?= __('Categories');?></div>
+
+        <div data-role="content" class="filter-options-content" role="tabpanel" aria-hidden="true" style="display: none;">
+            <ol class="items">
+
+
+                <?php foreach($categories as $_child): ?>
+                    <li class="item">
+                        <a href="<?= $_child->getUrl();?>">
+                            <span ><?= $_child->getName();?></span>
+                        </a>
+                    </li>
+                <?php endforeach; ?>
+
+            </ol>
+        </div>
+    </div>
+
+
+<?php endif;?>

@@ -1,0 +1,15 @@
+<div class="sku-lookup">
+    <h2><!-- ko i18n: 'Sku lookup' --><!-- /ko --></h2>
+
+<!--    <h2><translate args="'Sku lookup2'" /></h2>-->
+<!--    <h2 translate="'Sku lookup3'"></h2>-->
+<!--    <h2 data-bind="i18n: 'Sku lookup4'"></h2>-->
+
+    <form data-bind="submit : handleSubmit">
+        <input id="sku" name="sku" type="text" data-bind="textInput: sku, attr: { placeholder: placeholder  }" />
+        <button class="action primary" type="submit"><!-- ko i18n: 'Confirm Sku' --><!-- /ko --></button>
+        <div data-bind="html: messageResponse, style: { color: isSuccess() ? 'green' : 'red'}"></div>
+    </form>
+</div>
+
+
