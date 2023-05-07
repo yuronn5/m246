@@ -2,11 +2,15 @@ define([
     'jquery',
     'uiComponent',
     'ko',
+    'underscore',
     'Elogic_AddToCartPopup/js/model/popup',
-    'Magento_Ui/js/modal/modal'
-], function ($, Component, ko, cartModel, modal) {
+    'Magento_Ui/js/modal/modal',
+    'Magento_Customer/js/customer-data'
+], function ($, Component, ko, _, cartModel, modal,customerData) {
     'use strict';
     // var modalPopupSelector = '[data-placeholder="cart-popup"] .cart-popup';
+    var cart = customerData.get('cart');
+    var count = cart().summary_count;
 
     return Component.extend({
         isAdded: ko.observable(false),
@@ -31,6 +35,14 @@ define([
 
         _subscribeEvents: function () {
             var self = this;
+
+            // cart.subscribe(function () {
+            //         //     if (cart().summary_count !== count) {
+            //         //         count = cart().summary_count;
+            //         //         // do something here
+            //         //         console.log('Number of items in cart is now: ' + count);
+            //         //     }
+            //         // });
 
             $(document).on('ajax:addToCart', function () {
                 // console.log("added by ajax");
