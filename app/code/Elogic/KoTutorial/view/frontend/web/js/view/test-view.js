@@ -25,6 +25,22 @@ define([
                 console.log("a change:" + newValue);
                 Counter(newValue.length);
             }, this)
+
+            let self = this;
+
+            setTimeout(function () {
+                self.heading("update heading"); //міняєм на те саме шо у нас вже є щоб впевнетись що сабскрайбер не спрацює, бо валує однакове
+            }, 4000);
+
+            this.heading.subscribe(function (newValue) {
+                console.log("Headng value updated: " + newValue);
+                alert("Headng value updated: " + newValue);
+            }, this);
+
+            //завзяки цьому нотіфай - алвейс наш сабскрайбер буде відпрацьовувати завжди, не залежно яке значення
+            this.heading.extend({
+                notify: 'always'
+            });
         },
 
         onChangeInput: function () {
