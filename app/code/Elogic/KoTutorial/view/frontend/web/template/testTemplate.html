@@ -1,2 +1,9 @@
-<h1 data-bind="text: heading"></h1>
-<p data-bind="text: content"></p>
+<h1 data-bind="text: heading()"></h1>
+<p data-bind="text: content()"></p>
+<input data-bind="attr: {
+    type: 'text',
+    placeholder: 'modify the paragraph text',
+    id: 'custom-input'
+}, event: {
+    keyup: onChangeInput
+}">
