@@ -1,11 +1,13 @@
 define([
     'uiComponent',
     'ko',
-    'jquery'
+    'jquery',
+    'Elogic_KoTutorial/js/model/counter'
 ], function (
     Component,
     ko,
-    $
+    $,
+    Counter
 ) {
     'use strict';
 
@@ -13,7 +15,7 @@ define([
         defaults: {
             heading: ko.observable("ko heading"),
             content: ko.observable('Lorem ipsum blallalala'),
-            counter: ko.observable(0)
+            counter: Counter
         },
 
         initialize() {
@@ -21,7 +23,7 @@ define([
             this.heading("update heading").content("Custom text from js");
             this.content.subscribe(function (newValue) {
                 console.log("a change:" + newValue);
-                this.counter(newValue.length)
+                Counter(newValue.length);
             }, this)
         },
 
