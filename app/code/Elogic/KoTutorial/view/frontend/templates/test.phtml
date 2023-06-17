@@ -1,0 +1,20 @@
+<div id="ko-test" data-bind="scope: 'koTestComponent'">
+    <!-- ko template: getTemplate() --><!-- /ko -->
+</div>
+
+<script type="text/x-magento-init">
+    {
+        "#ko-test": {
+            "Magento_Ui/js/core/app": {
+                "components": {
+                    "koTestComponent": {
+                       "component": "Elogic_KoTutorial/js/view/test-view",
+                       "config" : {
+                            "template": "Elogic_KoTutorial/testTemplate"
+                       }
+                    }
+                }
+            }
+        }
+    }
+</script>
