@@ -8,3 +8,6 @@
     keyup: onChangeInput
 }">
 <p data-bind="attr: { id: 'counter' }, text: 'Input characters: ' + counter()"></p>
+<!-- ko foreach: getRegion('counter-component')  -->
+    <!-- ko template: getTemplate() --><!-- /ko -->
+<!-- /ko -->
