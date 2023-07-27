@@ -1,0 +1,106 @@
+& when (@media-common = true) {
+    .todo-wrapper {
+        margin: 0 -15px;
+        padding: 30px;
+
+        a, .action {
+            text-decoration: none;
+            color: #3a8565;
+        }
+    }
+
+    #todo-items {
+        list-style: none;
+        margin: 0;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: flex-start;
+        padding: 0;
+
+        li {
+            border: 1px solid #dcdcdc;
+            border-radius: 16px;
+            .lib-css(background-color, @color-white);
+            margin-right: 20px;
+
+            .top-description {
+                background-color: #e6e4e4;
+                padding: 15px 15px 40px 15px;
+                border-radius: 16px;
+                min-height: 116px;
+                position: relative;
+
+                & > h2 {
+                    margin: 0 0 8px 0;
+                    color: #3a8568;
+                    font-weight: 400;
+                }
+
+                .description {
+                    color: #737373;
+                }
+
+                .bottom-section-wrapper {
+                    position: absolute;
+                    bottom: 10px;
+                    width: 90%;
+                }
+
+                .bottom-section {
+                    .lib-vendor-prefix-display();
+                    .lib-vendor-prefix-flex-direction(row);
+                    .lib-vendor-prefix-flex-wrap(wrap);
+                    justify-content: space-between;
+                    .lib-css(color, #ff914d);
+                    margin-top: 20px;
+                }
+            }
+
+            .bottom-description {
+                padding: 15px;
+
+                .action-toolbar {
+                    display: flex;
+                    .lib-vendor-prefix-flex-direction(row);
+                    .lib-vendor-prefix-flex-wrap(wrap);
+                    justify-content: space-between;
+                    align-content: center;
+                    margin-bottom: 1rem;
+
+                    p {
+                        margin: 0;
+                    }
+                }
+
+                & > a.action {
+                    display: block;
+                    text-align: center;
+                }
+            }
+        }
+    }
+
+    .progress-indicator {
+        width: 100%;
+        .lib-css(background-color, #d9d9d9);
+        margin: 10px 0;
+        border-radius: 6px;
+        position: relative;
+
+        .bar {
+            width: 1%;
+            height: 18px;
+            .lib-css(background-color, #38b6ff);
+            transition: all 300ms;
+            .lib-css(border-radius, 6px);
+
+            .progress-text {
+                position: absolute;
+                left: 46%;
+                top: -1px;
+                .lib-css(color, #141313);
+            }
+        }
+    }
+}
