@@ -1,5 +1,5 @@
 define([
-    'uiComponent',
+    './abstract',
     'ko',
     'Elogic_ToDoListKo/js/model/todos'
 ], function (
@@ -9,6 +9,8 @@ define([
 ) {
     'use strict';
 
+    var todoObj;
+
     return Component.extend({
         defaults: {
             template: "Elogic_ToDoListKo/todo",
@@ -17,11 +19,17 @@ define([
 
         todos: todos,
         isVisible: ko.observable(0),
+        isTodoVisible: ko.observable(false),
 
         initialize() {
             this._super();
-
+            todoObj = this;
             this.isVisible(this.todos().length);
+            this.isTodoVisible.subscribe(function (value) {
+                if (value) {
+                    this.getPopup().openModal();
+                }
+            }, this);
         },
 
         getProgressCount: function (completedTasks, totalTasks) {
@@ -31,6 +39,15 @@ define([
 
             let percentage = parseInt(Math.floor(Math.round(completedTasks/totalTasks * 100)));
             return !isNaN(percentage) ? percentage : 0;
-        }
+        },
+
+        editTodo: function () {
+            todoObj.isTodoVisible(true);
+        },
+
+        afterBindClosePopUp: function () {
+            this._super();
+            this.isTodoVisible(false);
+        },
     });
 });
