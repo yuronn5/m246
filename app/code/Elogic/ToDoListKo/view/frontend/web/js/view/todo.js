@@ -1,23 +1,27 @@
 define([
     'uiComponent',
-    'ko'
+    'ko',
+    'Elogic_ToDoListKo/js/model/todos'
 ], function (
     Component,
-    ko
+    ko,
+    todos
 ) {
     'use strict';
 
     return Component.extend({
         defaults: {
             template: "Elogic_ToDoListKo/todo",
-            todos: [],
-            isVisible: ko.observable(0)
+
         },
+
+        todos: todos,
+        isVisible: ko.observable(0),
 
         initialize() {
             this._super();
 
-            this.isVisible(this.todos.length);
+            this.isVisible(this.todos().length);
         },
 
         getProgressCount: function (completedTasks, totalTasks) {
