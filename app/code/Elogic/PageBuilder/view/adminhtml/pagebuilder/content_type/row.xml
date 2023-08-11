@@ -4,7 +4,7 @@
     <!-- See Magento/PageBuilder/view/adminhtml/pagebuilder/content_type/column.xml -->
     <!-- Add or change styles, attributes, elements, and appearances as needed. -->
     <!-- Be sure to remove any appearances, elements, and template references you are not overriding. -->
-    <type name="column"
-          preview_component="Elogic_PageBuilder/js/content-type/column/preview"
+    <type name="row"
+          preview_component="Elogic_PageBuilder/js/content-type/row/preview"
     />
 </config>
