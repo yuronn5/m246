@@ -88,6 +88,14 @@ define([
                 return;
             }
 
+            if (item.id === undefined || !item.id) {
+                item.id = todoObj.todos().length + 1;
+                todoObj.todos.push(todoObj._convertToObservables(item));
+
+                todoObj.getPopup().closeModal();
+                return;
+            }
+
             let index = _.findIndex(todoObj.todos(), {
                 id: item.id
             });
@@ -97,7 +105,25 @@ define([
                 return;
             }
 
-            todoObj.todos.replace(todoObj.todos()[index], {
+            todoObj.todos.replace(todoObj.todos()[index], todoObj._convertToObservables(item));
+
+            todoObj.getPopup().closeModal();
+        },
+
+        createNewTodo: function () {
+            todoObj.editTodo({
+                id: 0,
+                title: ko.observable(''),
+                description: ko.observable(''),
+                completed_tasks: ko.observable(0),
+                total_tasks: ko.observable(0),
+                start_date: ko.observable(new Date()),
+                end_date : ko.observable(new Date()),
+            })
+        },
+
+        _convertToObservables: function (item) {
+            return {
                 id: item.id,
                 title: ko.observable(item.title),
                 description: ko.observable(item.description),
@@ -105,9 +131,7 @@ define([
                 end_date: ko.observable(item.end_date),
                 completed_tasks: ko.observable(item.completed_tasks),
                 total_tasks: ko.observable(item.total_tasks),
-            });
-
-            todoObj.getPopup().closeModal();
+            }
         },
 
         triggerValidations: function () {
