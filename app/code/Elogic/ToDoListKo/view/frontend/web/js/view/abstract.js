@@ -1,11 +1,13 @@
 define([
     'uiComponent',
     'ko',
+    'uiRegistry',
     'jquery',
     'Magento_Ui/js/modal/modal'
 ], function (
     Component,
     ko,
+    registry,
     $,
     modal
 ) {
@@ -74,6 +76,12 @@ define([
 
         getPopUpButtons: function (btnArr) {
             return btnArr;
+        },
+
+        validateForm: function (registryPath) {
+            if (!registry.get(registryPath).validate().valid) {
+                this.source.get('params.invalid', true);
+            }
         }
     });
 });

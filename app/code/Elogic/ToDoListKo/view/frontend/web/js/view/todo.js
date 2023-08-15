@@ -23,6 +23,8 @@ define([
         todos: todos,
         isVisible: ko.observable(0),
         isTodoVisible: ko.observable(false),
+        todoFieldset: 'km-todo-scope.todo.todo-fieldset',
+        fields: ['title', 'description', 'start_date', 'end_date'],
 
         initialize() {
             this._super();
@@ -79,7 +81,13 @@ define([
         },
 
         saveTodoForm: function () {
+            todoObj.source.set('params.invalid', false)
             let item = todoObj.source.get('todo');
+            todoObj.triggerValidations();
+            if (todoObj.source.get('params.invalid')) {
+                return;
+            }
+
             let index = _.findIndex(todoObj.todos(), {
                 id: item.id
             });
@@ -100,6 +108,12 @@ define([
             });
 
             todoObj.getPopup().closeModal();
+        },
+
+        triggerValidations: function () {
+            _.each(this.fields, function (field, key) {
+                this.validateForm(this.todoFieldset + '.' + field);
+            }, this);
         }
     });
 });
