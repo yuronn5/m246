@@ -18,6 +18,9 @@ define([
     return Component.extend({
         defaults: {
             template: "Elogic_ToDoListKo/todo",
+            listens: {
+                'todos': 'onTodoLengthChange'
+            }
         },
 
         todos: todos,
@@ -35,6 +38,11 @@ define([
                     this.getPopup().openModal();
                 }
             }, this);
+        },
+
+        onTodoLengthChange: function () {
+            this.isVisible(this.todos().length);
+            return this;
         },
 
         getProgressCount: function (completedTasks, totalTasks) {
