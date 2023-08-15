@@ -1,11 +1,13 @@
 define([
     './abstract',
     'ko',
+    'underscore',
     'Elogic_ToDoListKo/js/model/todos',
     'jquery'
 ], function (
     Component,
     ko,
+    _,
     todos,
     $
 ) {
@@ -45,13 +47,19 @@ define([
         editTodo: function (item) {
             todoObj.isTodoVisible(true);
             console.log(item);
-            todoObj.source.set('todo', item);
+            todoObj.source.set('todo', {
+                id: item.id,
+                title: item.title(),
+                description: item.description(),
+                completed_tasks: item.completed_tasks(),
+                total_tasks: item.total_tasks()
+            });
             $('input[name="start_date"]').val(
-                new Date(item.start_date).toLocaleDateString('en-US'),
+                new Date(item.start_date()).toLocaleDateString('en-US'),
                 { day: 'short' }
             ).trigger('change');
             $('input[name="end_date"]').val(
-                new Date(item.end_date).toLocaleDateString('en-US'),
+                new Date(item.end_date()).toLocaleDateString('en-US'),
                 { day: 'short' }
             ).trigger('change');
         },
@@ -71,7 +79,27 @@ define([
         },
 
         saveTodoForm: function () {
-            //todo logic here
+            let item = todoObj.source.get('todo');
+            let index = _.findIndex(todoObj.todos(), {
+                id: item.id
+            });
+
+            if (index < 0 || index === undefined) {
+                alert("Something went wrong");
+                return;
+            }
+
+            todoObj.todos.replace(todoObj.todos()[index], {
+                id: item.id,
+                title: ko.observable(item.title),
+                description: ko.observable(item.description),
+                start_date: ko.observable(item.start_date),
+                end_date: ko.observable(item.end_date),
+                completed_tasks: ko.observable(item.completed_tasks),
+                total_tasks: ko.observable(item.total_tasks),
+            });
+
+            todoObj.getPopup().closeModal();
         }
     });
 });
