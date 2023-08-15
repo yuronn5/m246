@@ -30,6 +30,17 @@
             text-decoration: @todo_link_action__text_decoration;
             color: @todo_link_action__color;
         }
+
+        .btn-toolbar {
+            margin: 15px 15px 15px 0px;
+
+            .btn-secondary {
+                .lib-css(background-color, @color-black_dark);
+                .lib-css(color, @color-white);
+                padding: @indent__standart;
+                text-transform: uppercase;
+            }
+        }
     }
 
     #todo-items {
