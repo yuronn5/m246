@@ -122,6 +122,16 @@ define([
             })
         },
 
+        deleteTodo: function (item) {
+            if (!confirm("Are you sure you want to delete the item?")) {
+                return;
+            }
+
+            todoObj.todos.remove(function (todo) {
+                return todo.id === item.id;
+            });
+        },
+
         _convertToObservables: function (item) {
             return {
                 id: item.id,
