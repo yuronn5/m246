@@ -18,14 +18,21 @@ define([
     return Component.extend({
         defaults: {
             template: "Elogic_ToDoListKo/todo",
+            imports: {
+                'taskStatuses': '${ $.parentName }.task:taskStatuses'
+            },
             listens: {
-                'todos': 'onTodoLengthChange'
+                'todos': 'onTodoLengthChange',
+                'taskStatuses': 'onTaskStatusUpdate'
             }
         },
 
         todos: todos,
         isVisible: ko.observable(0),
         isTodoVisible: ko.observable(false),
+        isTaskPopUpVisible: ko.observable(false),
+        activeTodoId: ko.observable(0),
+        taskStatuses: ko.observableArray([]),
         todoFieldset: 'km-todo-scope.todo.todo-fieldset',
         fields: ['title', 'description', 'start_date', 'end_date'],
 
@@ -43,6 +50,30 @@ define([
         onTodoLengthChange: function () {
             this.isVisible(this.todos().length);
             return this;
+        },
+
+        onTaskStatusUpdate: function (taskStatus) {
+            if (taskStatus[0] === undefined
+                || taskStatus[0].parentId === undefined
+                || taskStatus[0].totalTasks === undefined
+                || taskStatus[0].completedTasks === undefined
+            ) {
+                return;
+            }
+
+            taskStatus = taskStatus[0];
+            let index = _.findLastIndex(todoObj.todos(), {
+               id: taskStatus.parentId
+            });
+
+            if (this.todos()[index] === undefined) {
+                return;
+            }
+
+            let todo = this.todos()[index];
+            todo.completed_tasks(taskStatus.completedTasks);
+            todo.total_tasks(taskStatus.totalTasks);
+            this.todos.replace(todoObj.todos()[index], todo);
         },
 
         getProgressCount: function (completedTasks, totalTasks) {
@@ -156,6 +187,11 @@ define([
             _.each(this.fields, function (field, key) {
                 this.validateForm(this.todoFieldset + '.' + field);
             }, this);
+        },
+
+        viewTasks: function (item) {
+            todoObj.activeTodoId(item.id);
+            todoObj.isTaskPopUpVisible(true);
         }
     });
 });
