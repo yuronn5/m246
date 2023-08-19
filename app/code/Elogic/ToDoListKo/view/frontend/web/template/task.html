@@ -37,7 +37,7 @@
         </div>
     </div>
     <div class="task-form block-content" data-bind="fadeVisible: isFormVisible()">
-        <form class="form" id="task-form">
+        <form class="form" id="task-form" data-bind="submit: saveTask">
             <fieldset class="fieldset taks" data-bind="attr: { 'data-hasrequired': '* Required fields' }">
                 <each args="getRegion('task-form')" render=""></each>
                 <div class="btn-toolbar">
