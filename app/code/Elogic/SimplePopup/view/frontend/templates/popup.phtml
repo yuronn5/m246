@@ -1,0 +1,53 @@
+<?php
+/**
+* @var \Magento\Framework\View\Element\Template $block
+* @var \Magento\Framework\Escaper $escaper
+* @var \Magento\Framework\View\Helper\SecureHtmlRenderer $secureRenderer
+*/
+?>
+<!--//popup content-->
+<div id="available-qty-bundle" >
+    <div><span>Inventory Available:</span></div>
+    <table class="data table" id="test-data-table">
+        <caption class="table-caption">Inventory Available:</caption>
+        <thead>
+        <tr class="selected-size-double">
+            <th scope="col" class="col"></th>
+            <th scope="col" class="col">S</th>
+            <th scope="col" class="col">M</th>
+            <th scope="col" class="col">L</th>
+            <th scope="col" class="col">XL</th>
+            <th scope="col" class="col">2XL</th>
+            <th scope="col" class="col">3XL</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr class="selected-size-double">
+            <td class="col white available-qty">White</td>
+            <td class="col white s available-qty">-</td>
+            <td class="col white m available-qty">7</td>
+            <td class="col white l available-qty active">-</td>
+            <td class="col white xl available-qty">19</td>
+            <td class="col white 2xl available-qty">5</td>
+            <td class="col white 3xl available-qty">-</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<!---->
+
+<!--popup trigger-->
+<button class="inventory-table-btn-wrapper" name="123">
+    Show popup
+</button>
+
+
+<script type="text/x-magento-init">
+    {
+        "#available-qty-bundle": {
+            "inventoryTablePopup": {
+                "openPopupBtn": ".inventory-table-btn-wrapper"
+            }
+        }
+    }
+</script>
