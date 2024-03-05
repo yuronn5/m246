@@ -8,7 +8,7 @@
                 <block class="Magento\Framework\View\Element\Template" name="second_footer"
                        template="YuriiBilous_TestGame::second_footer.phtml">
                     <block class="Magento\Framework\View\Element\Template" name="popup_content"
-                           template="YuriiBilous_TestGame::view/popup_content.phtml" after="-"/>
+                           template="YuriiBilous_TestGame::view/popup_content.phtml" />
                 </block>
             </container>
         </referenceContainer>

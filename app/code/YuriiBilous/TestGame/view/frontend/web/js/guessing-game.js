@@ -18,59 +18,61 @@ define([
         }]
     };
 
-    let triggerButton = $("#click-me"),
-        historyRecord = $('#guess-history'),
-        resultText = $('#guess-result'),
-        guessBtn = $('#guess-btn'),
-        input = $('#guess-input'),
-        restartBtn = $('#restart-btn'),
-        popup = modal(options, $('#popup-modal')),
-        closeBtn = $('.game-popup .modal-header .action-close');
+    let selectors = {
+        triggerButton: $("#click-me"),
+        historyRecord: $('#guess-history'),
+        resultText: $('#guess-result'),
+        guessBtn: $('#guess-btn'),
+        input: $('#guess-input'),
+        restartBtn: $('#restart-btn'),
+        popup: modal(options, $('#popup-modal')),
+        closeBtn: $('.game-popup .modal-header .action-close')
+    };
 
-    triggerButton.on('click',function(){
+    selectors.triggerButton.on('click',function(){
         $("#popup-modal").modal("openModal");
     });
 
-    restartBtn.on('click', resetGame);
-    closeBtn.on('click', resetGame);
+    selectors.restartBtn.on('click', resetGame);
+    selectors.closeBtn.on('click', resetGame);
 
     // Function to reset the game
     function resetGame() {
         randomNumber = Math.floor(Math.random() * 50) + 1;
         guesses = [];
-        historyRecord.empty();
-        resultText.empty();
-        input.val('');
-        restartBtn.hide();
+        selectors.historyRecord.empty();
+        selectors.resultText.empty();
+        selectors.input.val('');
+        selectors.restartBtn.hide();
     }
 
     let randomNumber = Math.floor(Math.random() * 50) + 1,
         guesses = [];
 
-    guessBtn.on('click', function() {
-        let guess = parseInt(input.val());
+    selectors.guessBtn.on('click', function() {
+        let guess = parseInt(selectors.input.val());
 
         if (isNaN(guess) || guess < 1 || guess > 50) {
-            resultText.html('<p>' + $t('Please enter a number between 1 and 50.') + '</p>');
+            selectors.resultText.html('<p>' + $t('Please enter a number between 1 and 50.') + '</p>');
             return;
         }
 
         guesses.push(guess);
 
         if (guess < randomNumber) {
-            resultText.html('<p>'+ $t('The number entered was below the random number.') + '</p>');
+            selectors.resultText.html('<p>'+ $t('The number entered was below the random number.') + '</p>');
         } else if (guess > randomNumber) {
-            resultText.html('<p>'+ $t('The number entered was above the random number.') + '</p>');
+            selectors.resultText.html('<p>'+ $t('The number entered was above the random number.') + '</p>');
         } else {
-            resultText.html('<p>'+ $t('Congratulations! You guessed the correct number.') + '</p>');
+            selectors.resultText.html('<p>'+ $t('Congratulations! You guessed the correct number.') + '</p>');
             displayGuessHistory();
-            restartBtn.show();
+            selectors.restartBtn.show();
         }
     });
 
     // Function to display guess history
     function displayGuessHistory() {
-        historyRecord.empty();
+        selectors.historyRecord.empty();
 
         for (let i = 0; i < guesses.length; i++) {
             let guess = guesses[i];
@@ -78,7 +80,7 @@ define([
             if (i === guesses.length - 1) {
                 listItem.addClass('highlight');
             }
-            historyRecord.append(listItem);
+            selectors.historyRecord.append(listItem);
         }
     }
 });
