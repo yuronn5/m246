@@ -1,0 +1,16 @@
+<?php
+/**
+ * Second footer template
+ *
+ * @var \Magento\Framework\Escaper $escaper
+ * @var \Magento\Framework\View\Helper\SecureHtmlRenderer $secureRenderer
+ */
+?>
+
+<div id="popup-modal">
+    <?php echo $this->getChildHtml('popup_content') ?>
+</div>
+
+<div class="button-wrapper" data-mage-init='{"guessing_game": {}}'>
+    <button class="action primary" id="click-me"><?= $escaper->escapeHtml(__('Click Me')) ?></button>
+</div>

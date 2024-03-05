@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceContainer name="page.wrapper">
+            <container name="second-footer-container" as="second-footer" after="footer-container"
+                       label="Page Footer Second Container" htmlTag="footer" htmlClass="page-footer-second">
+                <block class="Magento\Framework\View\Element\Template" name="second_footer"
+                       template="YuriiBilous_TestGame::second_footer.phtml">
+                    <block class="Magento\Framework\View\Element\Template" name="popup_content"
+                           template="YuriiBilous_TestGame::view/popup_content.phtml" after="-"/>
+                </block>
+            </container>
+        </referenceContainer>
+    </body>
+</page>
