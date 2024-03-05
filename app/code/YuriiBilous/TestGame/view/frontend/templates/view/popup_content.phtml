@@ -1,0 +1,16 @@
+<?php
+/**
+ * Popup content template
+ *
+ * @var \Magento\Framework\Escaper $escaper
+ */
+?>
+
+<div class="modal-wrapper">
+    <label for="guess-input"><?= $escaper->escapeHtml(__('Enter your guess (1-50):')) ?></label>
+    <input type="number" id="guess-input">
+    <button type="button" id="guess-btn"><?= $escaper->escapeHtml(__('Guess')) ?></button>
+    <div id="guess-result"></div>
+    <div id="guess-history"></div>
+    <button type="button" id="restart-btn"><?= $escaper->escapeHtml(__('Restart')) ?></button>
+</div>
